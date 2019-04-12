@@ -5,7 +5,7 @@ function Pizza(size) {
 }
 
 // Pizza.prototype.selectSize = function(size) {
-//   this.size = size; // this.size is an attribute of the object, the object is the instance of Pizza.
+//   this.size = size;
 // }
 
 Pizza.prototype.selectTopping = function(topping) {
@@ -22,7 +22,7 @@ Pizza.prototype.possibleToppings = {
   "spinach": 1,
   "artichoke": 2,
   "mushroom": 2,
-  "tomatoes": 2,
+  "tomatoes": 3,
   "truffle oil": 4
 }
 
@@ -44,17 +44,16 @@ $(document).ready(function() {
 
     var pizza = new Pizza(
       $("#size").val(),
-      $("input:checkbox[name=toppings]:checked").each(function(){
-        var toppingsChosen = $(this).val();
-        $(".totalcost").append(toppingsChosen + "<br>");
-      })
+      $("input:checkbox[name=toppings]:checked").val()
+        // var toppingsChosen = $(this).val();
+        // $(".finalCost").append(toppingsChosen + "<br>");
     );
 
     var cost = pizza.pizzaCost();
     $(".totalcost").text(parseInt(cost));
 
-    // console.log(parseInt(cost))
-    // console.log(cost.pizzaCost())
+    console.log(parseInt(cost))
+
   });
   $(".btn3").click(function() {
 
