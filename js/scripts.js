@@ -40,16 +40,20 @@ Pizza.prototype.pizzaCost = function() {
 // User interface logic
 $(document).ready(function() {
   $(".btn1").click(function() {
-    var pizza = new Pizza(
-      $("#size").val(),
-      $("#toppings").val()
-    )
-    var cost = pizza.pizzaCost();
-
-    $(".totalcost").text(parseInt(cost));
     $(".finalCost").show();
 
-    console.log(parseInt(cost))
+    var pizza = new Pizza(
+      $("#size").val(),
+      $("input:checkbox[name=toppings]:checked").each(function(){
+        var toppingsChosen = $(this).val();
+        $(".totalcost").append(toppingsChosen + "<br>");
+      })
+    );
+
+    var cost = pizza.pizzaCost();
+    $(".totalcost").text(parseInt(cost));
+
+    // console.log(parseInt(cost))
     // console.log(cost.pizzaCost())
   });
   $(".btn3").click(function() {
