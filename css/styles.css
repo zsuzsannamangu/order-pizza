@@ -2,6 +2,14 @@
   display: none;
 }
 
+.deliveryform {
+  display: none;
+}
+
+.thankyou {
+  display: none;
+}
+
 body {
 	font: 14px/20px  Arial, Helvetica, sans-serif;
 	color:#5f5e4e;

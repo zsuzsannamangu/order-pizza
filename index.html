@@ -11,11 +11,12 @@
   <body>
     <div class=container>
       <h1>Welcome to Bella Pizza!</h1>
+      <br>
+      <br>
       <img src="img/pizza1.jpeg" alt="An image of pizza">
-      <br>
-      <br>
       <div class="row">
         <div class="col-md-6">
+          <hr>
           <form>
             <div class="pizzaSizes form-group">
               <label for="size">What size would you like to order?</label>
@@ -34,13 +35,40 @@
               <input type="checkbox" name="toppings" value="tomatoes"> Sundried tomatoes $2<br>
               <input type="checkbox" name="toppings" value="truffleoil"> Truffle oil $4<br>
             </div>
-            <button type="button" class="btn btn-primary">Place my order</button>
-            <hr>
+            <button type="button" class="btn1 btn-primary">Calculate my cost</button>
           </form>
+          <br>
           <div class="finalCost">
             <p>Your total is $<span class="totalcost"></span>.</p>
-            <p>Thank you for your order!</p>
           </div>
+          <form>
+            <hr>
+            <div class="deliveryoption form-group">
+              <label for="delivery">Delivery or pick-up?</label>
+              <select class="form-control" id="delivery">
+                <option value="delivery">Delivery</option>
+                <option value="pickup">Pick-up</option>
+              </select>
+              <br>
+              <button type="button" class="btn2 btn-primary">Enter</button>
+            </div>
+            <div class="deliveryform">
+              <h4> Please fill out this form for delivery:</h4>
+              <div class="name form-group">
+                <label for="name">Name</label>
+                <input type="text"  class="form-control" id="name">
+              </div>
+              <div class="address form-group">
+                <label for="address">Address</label>
+                <input type="text"  class="form-control" id="address">
+              </div>
+              <button type="button" class="btn3 btn-primary">Place my order</button>
+              <hr>
+              </div>
+            <div class="thankyou">
+              <p>Thank you for your order!</p>
+            </div>
+          </form>
         </div>
       </div>
     </div>
