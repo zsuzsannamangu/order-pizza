@@ -28,9 +28,11 @@ var possibleToppings = {
 
 Pizza.prototype.pizzaCost = function() {
   var cost = 0;
+  cost = cost + possibleSizes[this.size]
+  // console.log(cost)
   this.toppings.forEach(function(topping) {
-    console.log(topping, possibleToppings[topping]);
-    cost += possibleToppings[topping]
+    // console.log(topping, possibleToppings[topping]);
+  cost = cost + possibleToppings[topping]
   });
   return cost
 };
@@ -49,14 +51,3 @@ console.log(pizza.pizzaCost())
 //
 // pizza.size = '18inchwff'
 // console.log(pizza.size)
-
-
-
-
-
-
-
-var myFunc = function(myArg) {
-  console.log('This is "myArg":', myArg);
-  return "this is what I return."
-}
