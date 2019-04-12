@@ -1,3 +1,4 @@
+//Business logic
 function Pizza() {
   // 14in plain is default
   this.size = "14inch";
@@ -29,19 +30,39 @@ var possibleToppings = {
 Pizza.prototype.pizzaCost = function() {
   var cost = 0;
   cost = cost + possibleSizes[this.size]
-  // console.log(cost)
+  console.log(cost)
   this.toppings.forEach(function(topping) {
-    // console.log(topping, possibleToppings[topping]);
+  console.log(topping, possibleToppings[topping]);
   cost = cost + possibleToppings[topping]
   });
   return cost
 };
 
-var pizza = new Pizza()
+//User interface logic
+$(document).ready(function() {
+  $(".btn1").click(function() {
+    var pizza = new Pizza(
+      $("#size").val(),
+      $("#toppings").val()
+    )
+    var cost = pizza.pizzaCost();
 
-pizza.selectTopping('mushroom')
-pizza.selectTopping('spinach')
-console.log(pizza.pizzaCost())
+    $(".totalcost").text(cost);
+    $(".finalcost").show();
+
+    console.log(cost.size)
+    // console.log(cost.pizzaCost())
+  });
+});
+
+
+
+//
+// var pizza = new Pizza()
+//
+// pizza.selectTopping('mushroom')
+// pizza.selectTopping('spinach')
+// console.log(pizza.pizzaCost())
 
 // var pizza = new Pizza() // "specific" pizza is the instance of "abstract" Pizza "class".
 // console.log(pizza.size)
