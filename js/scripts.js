@@ -52,6 +52,10 @@ $(document).ready(function() {
     console.log(parseInt(cost))
     // console.log(cost.pizzaCost())
   });
+  $(".btn3").click(function() {
+    $(".thankyou").show();
+  });
+
 });
 
 
