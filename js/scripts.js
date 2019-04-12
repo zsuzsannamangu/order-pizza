@@ -53,7 +53,13 @@ $(document).ready(function() {
     // console.log(cost.pizzaCost())
   });
   $(".btn3").click(function() {
+
+    var addressInput = $("input#address").val();
+    var nameInput = $("input#name").val();
+
     $(".thankyou").show();
+    $(".name").html(nameInput);
+    $(".address").html(addressInput);
   });
 
 });
