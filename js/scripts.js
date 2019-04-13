@@ -1,24 +1,16 @@
 //Business logic
-function Pizza(size) {
+function Pizza(size, toppings) {
   this.size = size;
-  this.toppings = [];
+  this.toppings = toppings;
 }
 
-// Pizza.prototype.selectSize = function(size) {
-//   this.size = size;
-// }
-
-Pizza.prototype.selectTopping = function(topping) {
-  this.toppings.push(topping);
-}
-
-Pizza.prototype.possibleSizes = {
+var possibleSizes = {
   "small": 10,
   "medium": 14,
   "large": 18
 }
 
-Pizza.prototype.possibleToppings = {
+var possibleToppings = {
   "spinach": 1,
   "artichoke": 2,
   "mushroom": 2,
@@ -28,11 +20,10 @@ Pizza.prototype.possibleToppings = {
 
 Pizza.prototype.pizzaCost = function() {
   var cost = 0;
-  this.size in this.possibleSizes
-    cost = this.possibleSizes[this.size] + cost
+  cost = possibleSizes[this.size] + cost
 
   this.toppings.forEach(function(topping) {
-    cost = cost + this.possibleToppings[topping]
+    cost = cost + possibleToppings[topping]
   });
   return cost
 }
@@ -42,19 +33,24 @@ $(document).ready(function() {
   $(".btn1").click(function() {
     $(".finalCost").show();
 
+    var toppings = [];
+    $("input:checkbox[name=toppings]:checked").each(
+      function(){
+        toppings.push($(this).val())
+      }
+    )
     var pizza = new Pizza(
       $("#size").val(),
-      $("input:checkbox[name=toppings]:checked").val()
-        // var toppingsChosen = $(this).val();
-        // $(".finalCost").append(toppingsChosen + "<br>");
+      toppings
     );
 
     var cost = pizza.pizzaCost();
     $(".totalcost").text(parseInt(cost));
 
-    console.log(parseInt(cost))
+    // console.log(parseInt(cost))
 
   });
+
   $(".btn3").click(function() {
 
     var addressInput = $("input#address").val();
