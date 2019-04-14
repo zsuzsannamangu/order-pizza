@@ -4,6 +4,13 @@ function Pizza(size, toppings) {
   this.toppings = toppings;
 }
 
+Pizza.prototype.display = function() {
+  return `
+    <h4> 1 ${this.size} pizza -- $${this.pizzaCost()}</h4>
+    <li>${this.toppings.join("</li><li>")}</li>
+    `;
+}
+
 var possibleSizes = {
   "small": 10,
   "medium": 14,
@@ -11,10 +18,12 @@ var possibleSizes = {
 }
 
 var possibleToppings = {
+  "cheese": 0,
+  "marinara": 0,
   "spinach": 1,
   "artichoke": 2,
   "mushroom": 2,
-  "tomatoes": 3,
+  "sundried tomatoes": 3,
   "truffle oil": 4
 }
 
@@ -28,15 +37,19 @@ Pizza.prototype.pizzaCost = function() {
   return cost
 }
 
+var orders = [];
+var totalcost = 0;
+
 // User interface logic
 $(document).ready(function() {
   $(".btn1").click(function() {
     $(".finalCost").show();
 
-    var toppings = [];
+    var toppings = ['cheese', 'marinara'];
     $("input:checkbox[name=toppings]:checked").each(
       function(){
         toppings.push($(this).val())
+        $(this).prop("checked", false);
       }
     )
     var pizza = new Pizza(
@@ -44,14 +57,16 @@ $(document).ready(function() {
       toppings
     );
 
-    var cost = pizza.pizzaCost();
-    $(".totalcost").text(parseInt(cost));
+    orders.push(pizza.display());
+
+    totalcost += pizza.pizzaCost();
+    $(".totalcost").html(parseInt(totalcost));
+    $(".order").html(orders.join(" "));
 
     // console.log(parseInt(cost))
-
   });
 
-  $(".btn3").click(function() {
+  $(".btn2").click(function() {
 
     var addressInput = $("input#address").val();
     var nameInput = $("input#name").val();
@@ -60,7 +75,6 @@ $(document).ready(function() {
     $(".name").html(nameInput);
     $(".address").html(addressInput);
   });
-
 });
 
 
